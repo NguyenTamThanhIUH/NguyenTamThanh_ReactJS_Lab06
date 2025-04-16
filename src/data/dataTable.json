@@ -1,0 +1,18 @@
+[
+    {
+        "avatar":"./Avatar 313.png","name":"Elizabeth Leee","company":"AvatarSystem","ordervalue":"$539","orderdate":"10/07/023","status":"New","image":"./Pie chart.png"
+    },
+    {
+        "avatar":"./user.png","name":"Carlos Garciae","company":"SmoozeShift ","ordervalue":"$747","orderdate":"24/07/2023 ","status":"New","image":"./Pie chart.png"
+    },
+    {
+        "avatar":"./woman.png","name":"Elizabeth LBayli","company":"Prime Time Telecom ","ordervalue":"$564 ","orderdate":"11/07/2022","status":"In-progress","image":"./Pie chart.png"
+    },
+    {
+        "avatar":"./man.png","name":"Ryan Brown Hy","company":"OmniTech Corporation ","ordervalue":"$541 ","orderdate":"10/082005","status":"In-progress ","image":"./Pie chart.png"
+    },
+    {
+        "avatar":"./Avatar 313.png","name":"Ryan Young He","company":"DataStream Inc","ordervalue":"$769 ","orderdate":"16/12/2020","status":"Completed ","image":"./Pie chart.png"
+    }
+
+]
