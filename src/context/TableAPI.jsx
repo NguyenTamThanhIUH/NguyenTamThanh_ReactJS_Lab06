@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect, useContext } from "react";
- 
+ import { createContext, useState, useEffect, useContext } from "react";
  import { toast } from "react-toastify";
+ 
  const TableContext = createContext();
  
  export const TableProvider = ({ children }) => {
@@ -21,6 +21,22 @@ import { createContext, useState, useEffect, useContext } from "react";
      fetchData();
    }, []);
  
+ 
+   //GET
+ useEffect(() => {
+   fetch(API_URL)
+     .then((res) => res.json())     
+     .then((data) => {
+       setData(data);        
+       console.log(data);    
+     })
+     .catch((error) => {
+       console.error("Error fetching data:", error);
+       toast.error("Lấy dữ liệu thất bại. Vui lòng thử lại!");
+     });
+ }, []);
+ 
+   //PUT
    const HandleUpdateUser = async (updatedUser,index) => {
      try {
        const response = await fetch(`${API_URL}/${index}`, {
@@ -45,11 +61,11 @@ import { createContext, useState, useEffect, useContext } from "react";
  
    const totalUser = dataTB.length;
  
- 
+  
    return (
      <TableContext.Provider
-       value={{ dataTB,totalUser}}
        value={{ dataTB,totalUser,HandleUpdateUser}}
+       value={{ dataTB, HandleUpdateUser, totalUser }}
      >
        {children}
      </TableContext.Provider>
