@@ -34,7 +34,7 @@ const Sidebar = () => {
           </li>
 
           <li className="rounded ml-5 p-1 bg-gray-100">
-            <NavLink to="/analytis" className={navLinkClass}>
+            <NavLink to="/analytics" className={navLinkClass}>
               <img src="./Pie chart.png" alt="" />
               <h4 className="ml-5">Analytis</h4>
             </NavLink>
