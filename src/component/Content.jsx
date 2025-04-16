@@ -5,7 +5,6 @@
  
  const Content = () => {
      const {dataTB,totalUser} = useTable();
-     console.log(dataTB);
      const [isModalOpen, setIsModalOpen] = useState(false);
      const [index,setIndex] = useState(null);
      const [user,setUser] = useState(null);
@@ -25,10 +24,10 @@
      setUser(dataTB[index]);
      setIndex(index);
      setIsModalOpen(true);
-    
+ 
    }
  
-     
+ 
      return (
        <div className="w-full p-5">
          <div className="grid grid-cols-12">
@@ -60,7 +59,6 @@
                </div>
              </div>
              <div className="col-span-10 text-end">
-               <button className="rounded border-1 border-pink-400 p-1 text-pink-400">Add User</button>
                <button className="rounded border-1 border-pink-400 p-1 text-pink-400" onClick={openModal}>Add User</button>
                <button className="rounded border-1 border-pink-400 p-1 ml-3 text-pink-400">Export</button>
              </div>
@@ -78,21 +76,33 @@
                      <th className="py-3">ODER DATE</th>
                      <th className="py-3">STATUST</th>
                      <th className="py-3">UPDATE</th>
+                     <th className="py-3 text-start"><input type="checkbox" /></th>
+                     <th className="py-3 text-start">CUSTOMER NAME</th>
+                     <th className="py-3 text-start">COMPANY</th>
+                     <th className="py-3 text-start">ORDER VALUE</th>
+                     <th className="py-3 text-start">ODER DATE</th>
+                     <th className="py-3 text-start">STATUST</th>
+                     <th className="py-3 text-start">UPDATE</th>
                    </tr>
                  </thead>
                  <tbody className="text-center">
+                 <tbody className="text-start">
                    {dataTB.map((item,index)=>(
                      <tr key={index}>
                   <td className="p-3"><input type="checkbox" /></td>
                    <td className="flex items-center justify-center p-3">
+                   <td className="flex items-start justify-start p-3">
                      <img src={item.avatar} alt="" className="w-10 h-10"/>
                      <h1 className="ml-4 p-1">{item.name}</h1>
+                    <div className="flex items-start justify-start">
+                    <h1 className="ml-4 p-1">{item.name}</h1>
+                    </div>
                    </td>
                    <td>{item.company}</td>
                    <td className="text-center">{item.ordervalue}</td>
+                   <td className="text-start px-9">{item.ordervalue}</td>
                    <td>{item.orderdate}</td>
                    <td className={`p-3 ${item.status === 'New' ? 'text-blue-400' : item.status === 'In-progress' ? 'text-yellow-400' : item.status === 'Completed' ? 'text-green-400' : 'text-blue-400'}`}>{item.status}</td>
-                   <td className=" flex items-center justify-center"><img src={item.image} alt="" /></td>
                    <td className=" flex items-center justify-center"><img src={item.image} alt="" onClick={()=>HandleEdit(index)}/></td>
                   </tr>
                    ))}
@@ -140,7 +150,6 @@
              </div>
              </div>
          </div>
-      
          <Modal isOpen={isModalOpen} closeModal={closeModal} editIndex={index} Edituser={user} setIndex ={setindexNull}/>      
  
        </div>
