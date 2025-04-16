@@ -1,6 +1,7 @@
 import Header from "./component/Header"
  import Siderbar from "./component/Siderbar"
  import Footer from "./component/Footer";
+import Content from "./component/Content";
  
  function App() {
  
@@ -12,6 +13,7 @@ import Header from "./component/Header"
              </div>
              <div className="col-span-10 shadow-lg">         
              <Header />
+             <Content/>
              </div>
            </div>
           <br />
