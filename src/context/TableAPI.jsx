@@ -6,20 +6,6 @@
  export const TableProvider = ({ children }) => {
    const [dataTB, setData] = useState([]);
    const API_URL = "https://67c865040acf98d070866108.mockapi.io/user"
-   useEffect(() => {
-     const fetchData = async () => {
-       try {
-         const response = await fetch(API_URL);
-         const data = await response.json();
-         setData(data);
-       } catch (error) {
-         console.error("Fetch error:", error);
-         toast.error("Failed to fetch data");
-       }
-     };
- 
-     fetchData();
-   }, []);
  
  
    //GET
@@ -59,13 +45,33 @@
      }
    };
  
+   const HandleAddUser = async (newUser) => {
+     try {
+       const response = await fetch(API_URL, {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify(newUser),
+       });
+ 
+       if (!response.ok) throw new Error("Failed to add user");
+ 
+       const savedUser = await response.json();
+       setData((prev) => [...prev, savedUser]);
+       toast.success("Add successfully");
+     } catch (error) {
+       console.error(error);
+       toast.error("Failed to add user");
+     }
+   };
+ 
    const totalUser = dataTB.length;
  
-  
    return (
      <TableContext.Provider
-       value={{ dataTB,totalUser,HandleUpdateUser}}
        value={{ dataTB, HandleUpdateUser, totalUser }}
+       value={{ dataTB, HandleUpdateUser, totalUser ,HandleAddUser}}
      >
        {children}
      </TableContext.Provider>
