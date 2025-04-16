@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, useContext } from "react";
  
+ import { toast } from "react-toastify";
  const TableContext = createContext();
  
  export const TableProvider = ({ children }) => {
@@ -20,12 +21,35 @@ import { createContext, useState, useEffect, useContext } from "react";
      fetchData();
    }, []);
  
+   const HandleUpdateUser = async (updatedUser,index) => {
+     try {
+       const response = await fetch(`${API_URL}/${index}`, {
+         method: "PUT", 
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify(updatedUser),
+       });
+ 
+       if (!response.ok) throw new Error("Failed to update user");
+ 
+       setData((prev) =>
+         prev.map((user,id) => (id === index ? updatedUser : user))
+       );
+       toast.success("Update successfully");
+     } catch (error) {
+       console.error(error);
+       toast.error("Failed to update user");
+     }
+   };
+ 
    const totalUser = dataTB.length;
  
-  
+ 
    return (
      <TableContext.Provider
        value={{ dataTB,totalUser}}
+       value={{ dataTB,totalUser,HandleUpdateUser}}
      >
        {children}
      </TableContext.Provider>

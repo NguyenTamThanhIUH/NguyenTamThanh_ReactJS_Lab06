@@ -1,4 +1,4 @@
-import Header from "./component/Header"
+ import Header from "./component/Header"
  import Siderbar from "./component/Siderbar"
  import Content from "./component/Content"
  import { BrowserRouter,Routes,Route } from "react-router-dom";
@@ -10,7 +10,7 @@ import Header from "./component/Header"
  import Fount404 from "./pages/Fount404";
  import Footer from "./component/Footer";
  
- 
+ import { ToastContainer } from "react-toastify";
  
  
  
@@ -20,14 +20,14 @@ import Header from "./component/Header"
    return (
      <BrowserRouter>
        <div className="w-full">
-        
+ 
            <div className="grid grid-cols-12 ">
              <div className="col-span-2 shadow-2xl">
              <Siderbar />
              </div>
              <div className="col-span-10 shadow-lg">         
              <Header />
-             <Content/>
+             <ToastContainer />
                <Routes>
                  <Route path="/" element={<Content />} />
                  <Route path="/dashboar" element={<Content />} />
